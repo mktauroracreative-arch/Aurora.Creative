@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)file:///C:/Users/Vickr/Downloads/landing%20page%20nova/aurora_creative_landing%20(1).html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora Creative — Marketing &amp; Branding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./aurora_creative_landing (2)_files/css2" rel="stylesheet">
+
+<!-- ============================================================
+  ANTES DE PUBLICAR — substitua os placeholders:
+  • SEUNUMERO → número com DDI+DDD, sem espaços (ex: 5511999999999)
+  • @aurora.creative → seu @ real no Instagram
+  • @aurora.creative (TikTok) → seu @ real no TikTok
+============================================================ -->
+
+<style>
+/* ============================================================
+   TOKENS
+============================================================ */
+:root {
+  --ink:         #05031d;
+  --ink-2:       #08072a;
+  --indigo:      #2b1e90;
+  --vivid:       #4a35e0;
+  --glow:        rgba(74,53,224,0.28);
+  --aurora:      #7b68f0;
+  --aurora-soft: rgba(123,104,240,0.15);
+  --white:       #ffffff;
+  --off:         rgba(255,255,255,0.58);
+  --muted:       rgba(255,255,255,0.34);
+  --border:      rgba(255,255,255,0.07);
+  --border-hot:  rgba(74,53,224,0.5);
+  --green-wa:    #25D366;
+  --green-live:  #22c55e;
+
+  --font-display: 'Poppins', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --max:          1200px;
+  --pad:          clamp(24px, 5vw, 80px);
+}
+
+/* ============================================================
+   RESET
+============================================================ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+a { text-decoration:none; color:inherit; }
+ul { list-style:none; }
+
+/* ============================================================
+   NAVBAR — fino por padrão, ainda mais fino ao scrollar
+============================================================ */
+.nav {
+  position: fixed; top:0; left:0; right:0; z-index:900;
+ padding: 2px var(--pad);
+  display: flex; align-items:center; justify-content:space-between;
+  transition: background .35s, backdrop-filter .35s,
+              border-color .35s, padding .35s;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  padding: 2px var(--pad);
+  background: rgba(5,3,29,0.92);
+  backdrop-filter: blur(20px);
+  border-color: var(--border);
+}
+.nav-brand {
+  display:flex; align-items:center; gap:9px;
+}
+.nav-logo{
+  width:80px;
+  height: 80px;
+  object-fit:contain;
+}
+.nav-text-logo{
+  height: 70px;
+  width:auto;
+  object-fit:contain;
+}
+.nav-brand .dot {
+  width:8px; height:8px; border-radius:50%;
+  background: linear-gradient(135deg, var(--aurora), var(--vivid));
+  box-shadow: 0 0 8px var(--vivid);
+}
+.nav-brand span {
+  
+  font-family: var(--font-display);
+  font-weight:600; letter-spacing:2.5px; font-size:12px;
+  text-transform:uppercase;
+}
+.nav-links { display:flex; gap:32px; }
+.nav-links a {
+  font-size:13px; color:var(--off); letter-spacing:.3px;
+  transition: color .2s;
+}
+.nav-links a:hover { color:var(--white); }
+
+.nav-pill {
+  display:flex; align-items:center; gap:7px;
+  background: rgba(74,53,224,0.12);
+  border: 1px solid var(--vivid);
+  border-radius:50px; padding:9px 20px;
+  font-size:12.5px; font-family:var(--font-display); font-weight:600;
+  color: var(--white); transition: all .3s;
+}
+.nav-pill:hover {
+  background: var(--vivid);
+  box-shadow: 0 0 20px var(--glow);
+}
+
+.nav-toggle {
+  display:none; flex-direction:column; gap:5px;
+  cursor:pointer; padding:4px;
+}
+.nav-toggle span {
+  width:22px; height:2px; background:var(--off);
+  border-radius:2px; transition:all .3s;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+  position:relative; min-height:100vh;
+  display:flex; align-items:center; overflow:hidden;
+}
+#hero-canvas {
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+}
+.hero-gradient {
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 50% at 18% 55%, rgba(42,30,140,0.22), transparent),
+    radial-gradient(ellipse 45% 40% at 80% 20%, rgba(74,53,224,0.12), transparent);
+}
+.hero-content {
+  position:relative; z-index:2;
+  max-width:var(--max); margin:0;
+  padding:140px var(--pad) 100px; width:100%;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:10px;
+  background:rgba(74,53,224,0.1);
+  border:1px solid rgba(74,53,224,0.35);
+  border-radius:50px; padding:8px 20px;
+  font-size:11px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--aurora); margin-bottom:32px;
+}
+.hero-badge-dot {
+  width:6px; height:6px; border-radius:50%;
+  background:var(--aurora);
+  animation:blink 2.4s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+
+.hero-title {
+  font-family:var(--font-display); font-weight:800;
+  font-size:clamp(44px, 6vw, 86px);
+  line-height:1.06; max-width:860px;
+  margin-bottom:28px; letter-spacing:-.5px;
+}
+.hero-title .line { display:block; }
+.hero-title .hl {
+  background:linear-gradient(95deg, var(--aurora) 0%, #c4baff 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero-sub {
+  font-size:clamp(15px,1.8vw,18px); color:var(--off);
+  max-width:500px; line-height:1.8; margin-bottom:50px;
+}
+.hero-ctas { display:flex; gap:14px; flex-wrap:wrap; }
+
+.btn {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:15px 32px; border-radius:50px;
+  font-family:var(--font-display); font-weight:600; font-size:14.5px;
+  transition:all .3s; cursor:pointer; border:none;
+}
+.btn-wa {
+  background:var(--green-wa); color:#fff;
+  box-shadow:0 0 28px rgba(37,211,102,0.22);
+}
+.btn-wa:hover { transform:translateY(-3px); box-shadow:0 10px 40px rgba(37,211,102,0.4); }
+.btn-ghost {
+  background:transparent; border:1px solid rgba(255,255,255,0.18); color:var(--white);
+}
+.btn-ghost:hover { border-color:var(--vivid); background:rgba(74,53,224,0.1); transform:translateY(-3px); }
+.btn-indigo {
+  background:var(--vivid); color:#fff; box-shadow:0 0 28px var(--glow);
+}
+.btn-indigo:hover { transform:translateY(-3px); box-shadow:0 10px 40px rgba(74,53,224,0.5); }
+
+.scroll-hint {
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+  z-index:2; display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+.scroll-hint span { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); }
+.scroll-bar {
+  width:1px; height:44px;
+  background:linear-gradient(to bottom, var(--aurora), transparent);
+  animation:scrollDrop 2.2s ease-in-out infinite;
+}
+@keyframes scrollDrop {
+  0%{opacity:0;transform:scaleY(0);transform-origin:top;}
+  45%{opacity:1;transform:scaleY(1);}
+  90%,100%{opacity:0;transform:scaleY(0);transform-origin:bottom;}
+}
+
+/* ============================================================
+   SHARED
+============================================================ */
+.section {
+  max-width:var(--max); margin:0 auto; padding:108px var(--pad);
+}
+.section-label {
+  font-size:11px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--aurora); font-weight:600; margin-bottom:14px;
+}
+.section-title {
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(30px,4vw,50px); line-height:1.15; margin-bottom:16px;
+}
+.section-sub {
+  font-size:clamp(15px,1.6vw,17px); color:var(--off);
+  line-height:1.75; max-width:580px; margin-bottom:60px;
+}
+.divider { border-top:1px solid var(--border); }
+
+/* ============================================================
+   OBJETIVO
+============================================================ */
+.objetivo-wrap { background:var(--ink); }
+.objetivo-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.obj-card {
+  background:linear-gradient(145deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005));
+  border:1px solid var(--border); border-radius:22px; padding:40px 36px;
+  position:relative; overflow:hidden;
+  transition:border-color .4s, transform .4s, box-shadow .4s;
+}
+.obj-card::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--vivid),transparent);
+  opacity:0; transition:opacity .4s;
+}
+.obj-card:hover { border-color:rgba(74,53,224,0.3); transform:translateY(-5px); box-shadow:0 20px 50px rgba(74,53,224,0.1); }
+.obj-card:hover::after { opacity:1; }
+.obj-icon {
+  width:52px; height:52px; border-radius:15px;
+  background:linear-gradient(135deg,rgba(74,53,224,0.25),rgba(43,30,144,0.15));
+  border:1px solid rgba(74,53,224,0.25);
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; margin-bottom:22px;
+}
+.obj-card h3 { font-family:var(--font-display); font-weight:600; font-size:19px; margin-bottom:10px; }
+.obj-card p { font-size:14px; line-height:1.75; color:var(--off); }
+
+/* ============================================================
+   SERVIÇOS — 3D Interactive
+============================================================ */
+.services-wrap {
+  background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 100%);
+  position:relative; overflow:hidden;
+}
+.deco-ring {
+  position:absolute; border-radius:50%; border:1px solid;
+  opacity:.06; animation:spinSlow linear infinite; pointer-events:none;
+}
+.deco-ring-1 { width:500px; height:500px; top:-120px; right:-160px; border-color:var(--aurora); animation-duration:50s; }
+.deco-ring-2 { width:360px; height:360px; bottom:-100px; left:-120px; border-color:var(--vivid); animation-duration:70s; animation-direction:reverse; }
+@keyframes spinSlow { to { transform:rotate(360deg); } }
+.deco-dot { position:absolute; border-radius:50%; pointer-events:none; animation:floatDot ease-in-out infinite alternate; }
+.deco-dot-1 { width:280px; height:280px; top:10%; right:5%; background:radial-gradient(circle,rgba(74,53,224,0.08),transparent); animation-duration:7s; }
+.deco-dot-2 { width:200px; height:200px; bottom:15%; left:8%; background:radial-gradient(circle,rgba(123,104,240,0.07),transparent); animation-duration:9s; }
+@keyframes floatDot { from{transform:translateY(0);} to{transform:translateY(-20px);} }
+.services-inner { position:relative; z-index:2; }
+.services-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+
+.s-card {
+  position:relative;
+  background:linear-gradient(145deg,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.01) 100%);
+  border:1px solid var(--border); border-radius:26px; padding:46px 40px;
+  cursor:pointer; transform-style:preserve-3d;
+  transform:perspective(1200px);
+  transition:border-color .35s, box-shadow .35s; will-change:transform;
+}
+.s-card:hover {
+  border-color:rgba(74,53,224,0.45);
+  box-shadow:0 24px 70px rgba(74,53,224,0.13), inset 0 0 50px rgba(74,53,224,0.04);
+}
+.s-glow {
+  position:absolute; inset:0; border-radius:26px; pointer-events:none;
+  opacity:0; transition:opacity .35s;
+  background:radial-gradient(circle 180px at var(--gx,50%) var(--gy,50%),rgba(74,53,224,0.18),transparent 70%);
+}
+.s-card:hover .s-glow { opacity:1; }
+.s-card-body { transform-style:preserve-3d; }
+.s-icon-wrap {
+  width:68px; height:68px; border-radius:18px;
+  background:linear-gradient(135deg,var(--vivid),var(--indigo));
+  display:flex; align-items:center; justify-content:center; margin-bottom:28px;
+  box-shadow:0 8px 28px rgba(74,53,224,0.35);
+  transform:translateZ(30px); transition:transform .35s, box-shadow .35s;
+}
+.s-card:hover .s-icon-wrap { transform:translateZ(45px); box-shadow:0 14px 40px rgba(74,53,224,0.5); }
+.s-icon-wrap svg { width:32px; height:32px; }
+.s-eyebrow {
+  font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--aurora); font-weight:600; margin-bottom:10px; transform:translateZ(18px);
+}
+.s-card h3 { font-family:var(--font-display); font-weight:700; font-size:22px; margin-bottom:14px; transform:translateZ(14px); }
+.s-card p { font-size:14px; line-height:1.8; color:var(--off); margin-bottom:24px; }
+.s-tags { display:flex; gap:8px; flex-wrap:wrap; }
+.s-tags span {
+  font-size:11px; padding:5px 14px; border-radius:50px;
+  border:1px solid var(--border); color:var(--aurora); background:rgba(74,53,224,0.07);
+}
+
+/* ============================================================
+   FORMULÁRIO — Próximos Passos
+============================================================ */
+.form-wrap { background:var(--ink); }
+.form-section {
+  max-width:var(--max); margin:0 auto; padding:108px var(--pad);
+}
+.form-header { margin-bottom:52px; }
+
+.form-container {
+  background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(74,53,224,0.04));
+  border:1px solid rgba(74,53,224,0.22);
+  border-radius:28px; padding:56px 52px;
+  position:relative; overflow:hidden;
+  box-shadow:0 0 80px rgba(74,53,224,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.form-container::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent 5%,rgba(74,53,224,0.6) 50%,transparent 95%);
+}
+.form-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:20px;
+}
+.form-group { display:flex; flex-direction:column; gap:8px; }
+.form-group.full { grid-column:1 / -1; }
+
+.form-label {
+  font-size:11.5px; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--aurora); font-weight:600;
+}
+.form-input, .form-select, .form-textarea {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px; padding:16px 20px;
+  color:var(--white); font-family:var(--font-body); font-size:14.5px;
+  transition:border-color .3s, box-shadow .3s; outline:none; width:100%;
+}
+.form-input::placeholder, .form-textarea::placeholder { color:var(--muted); }
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color:rgba(74,53,224,0.6);
+  box-shadow:0 0 0 3px rgba(74,53,224,0.12);
+  background:rgba(74,53,224,0.05);
+}
+.form-select {
+  appearance:none; -webkit-appearance:none; cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237b68f0' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 18px center;
+  padding-right:44px;
+}
+.form-select option { background:#0d0b2a; color:var(--white); }
+.form-textarea { resize:vertical; min-height:120px; line-height:1.7; }
+
+.form-footer {
+  margin-top:32px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:20px;
+}
+.form-status {
+  display:flex; align-items:center; gap:10px;
+}
+.status-dot {
+  width:9px; height:9px; border-radius:50%; background:var(--green-live);
+  box-shadow:0 0 0 0 rgba(34,197,94,0.4);
+  animation:pulse-green 2.5s ease-out infinite;
+  flex-shrink:0;
+}
+@keyframes pulse-green {
+  0%   { box-shadow:0 0 0 0 rgba(34,197,94,0.5); }
+  60%  { box-shadow:0 0 0 8px rgba(34,197,94,0); }
+  100% { box-shadow:0 0 0 0 rgba(34,197,94,0); }
+}
+.status-text { font-size:13px; color:var(--off); }
+
+.btn-submit {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:16px 34px; border-radius:50px;
+  background:var(--vivid); color:#fff; border:none; cursor:pointer;
+  font-family:var(--font-display); font-weight:700; font-size:14.5px;
+  box-shadow:0 0 28px var(--glow);
+  transition:all .3s;
+}
+.btn-submit:hover { transform:translateY(-3px); box-shadow:0 10px 40px rgba(74,53,224,0.55); }
+.btn-submit svg { width:17px; height:17px; }
+
+/* ============================================================
+   CTA STRIP
+============================================================ */
+.cta-wrap {
+  background:linear-gradient(160deg,rgba(42,30,140,0.18) 0%,transparent 50%,rgba(74,53,224,0.1) 100%);
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+}
+.cta-inner { text-align:center; max-width:700px; margin:0 auto; padding:100px var(--pad); }
+.cta-label { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--aurora); margin-bottom:18px; }
+.cta-title { font-family:var(--font-display); font-weight:800; font-size:clamp(34px,5vw,60px); line-height:1.1; margin-bottom:18px; }
+.cta-sub { font-size:clamp(15px,1.6vw,17px); color:var(--off); line-height:1.7; margin-bottom:40px; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+* ============================================================
+   REDES SOCIAIS
+============================================================ */
+.redes-wrap { background:var(--ink); }
+.redes-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.rede-card {
+  border:1px solid var(--border); border-radius:26px; padding:50px 44px;
+  position:relative; overflow:hidden;
+  transition:border-color .4s, transform .4s;
+  display:flex; flex-direction:column; gap:14px;
+}
+.rede-card::before { content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s; }
+.rede-ig::before { background:linear-gradient(135deg,rgba(214,36,159,0.07),rgba(252,175,69,0.05)); }
+.rede-tt::before { background:linear-gradient(135deg,rgba(23,232,220,0.05),transparent); }
+.rede-card:hover { border-color:rgba(74,53,224,0.3); transform:translateY(-5px); }
+.rede-card:hover::before { opacity:1; }
+.rede-platform { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--aurora); font-weight:600; position:relative; }
+.rede-handle { font-family:var(--font-display); font-weight:700; font-size:clamp(22px,3vw,30px); position:relative; }
+.rede-desc { font-size:14px; color:var(--off); line-height:1.7; max-width:380px; position:relative; }
+.rede-action {
+  display:inline-flex; align-items:center; gap:8px; margin-top:6px;
+  font-size:13.5px; font-family:var(--font-display); font-weight:600;
+  color:var(--aurora); position:relative; transition:gap .2s;
+}
+.rede-card:hover .rede-action { gap:12px; }
+.rede-action svg { width:15px; height:15px; }
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer-inner {
+  max-width:var(--max); margin:0 auto; padding:56px var(--pad);
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
+}
+.footer-brand { display:flex; align-items:center; gap:10px; }
+.footer-brand .dot { width:8px; height:8px; border-radius:50%; background:var(--vivid); box-shadow:0 0 8px var(--vivid); }
+.footer-brand span { font-family:var(--font-display); font-weight:600; letter-spacing:2px; font-size:12px; text-transform:uppercase; }
+.footer-links { display:flex; gap:28px; }
+.footer-links a { font-size:12.5px; color:var(--off); transition:color .2s; }
+.footer-links a:hover { color:var(--white); }
+.footer-copy { font-size:12px; color:var(--muted); }
+
+/* ============================================================
+   SCROLL ANIMATIONS
+============================================================ */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .75s ease, transform .75s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-d1 { transition-delay:.1s; }
+.reveal-d2 { transition-delay:.2s; }
+.reveal-d3 { transition-delay:.3s; }
+.reveal-d4 { transition-delay:.4s; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width:900px) {
+  .nav-links { display:none; }
+  .objetivo-grid, .services-grid, .redes-grid, .form-grid { grid-template-columns:1fr; }
+  .form-container { padding:36px 28px; }
+  .form-footer { flex-direction:column; align-items:flex-start; }
+  .nav-toggle { display:flex; }
+}
+@media (max-width:600px) {
+  .hero-ctas { flex-direction:column; }
+  .btn { justify-content:center; }
+  .footer-inner { flex-direction:column; align-items:flex-start; }
+  .cta-btns { flex-direction:column; align-items:center; }
+}
+.nav.open .nav-links {
+  display:flex; flex-direction:column; gap:0;
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:rgba(5,3,29,0.97); backdrop-filter:blur(20px);
+  z-index:800; justify-content:center; align-items:center; font-size:22px;
+}
+.nav.open .nav-links a { padding:12px 0; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+   NAVBAR
+============================================================ -->
+<nav class="nav" id="nav">
+  <a href="file:///C:/Users/Vickr/Downloads/landing%20page%20nova/aurora_creative_landing%20(1).html#" class="nav-brand">
+    <img src="./aurora_creative_landing (2)_files/logo.png.png" alt="Aurora Creative" class="nav-logo">
+    <img src="./aurora_creative_landing (2)_files/logotipo.png.png" alt="Aurora Creative" class="nav-text-logo">
+</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="file:///C:/Users/Vickr/Downloads/landing%20page%20nova/aurora_creative_landing%20(1).html#sobre" onclick="closeNav()">Nosso objetivo</a></li>
+    <li><a href="file:///C:/Users/Vickr/Downloads/landing%20page%20nova/aurora_creative_landing%20(1).html#servicos" onclick="closeNav()">Serviços</a></li>
+    <li><a href="file:///C:/Users/Vickr/Downloads/landing%20page%20nova/aurora_creative_landing%20(1).html#contato" onclick="closeNav()">Contato</a></li>
+  </ul>
+  <!-- ↓ Atualiza 11947899237 -->
+  <a class="nav-pill" href="https://wa.me/5511947899237?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o%20para%20falar%20sobre%20o%20Marketing%20da%20minha%20empresa." target="_blank">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>
+Agende uma reunião
+  </a>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ============================================================
+   HERO
+============================================================ -->
+<section class="hero" id="home">
+  <canvas id="hero-canvas" width="1366" height="633" style="width: 1366px; height: 633px;"></canvas>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Marketing &amp; Branding Digital
+    </div>
+    <h1 class="hero-title">
+      <span class="line">Posicionamento.</span>
+      <span class="line">Autoridade.</span>
+      <span class="line"><span class="hl">Crescimento.</span></span>
+    </h1>
+    <p class="hero-sub">
+      Construímos marcas memoráveis através da estratégia, comunicação e direção criativa.
+    </p>
+    <div class="hero-ctas">
+      <!-- ↓ Atualiza SEUNUMERO -->
+      <a class="btn btn-wa" href="https://wa.me/5547899237?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o%20para%20falar%20sobre%20o%20Marketing%20da%20minha%20empresa." target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.555 4.124 1.524 5.863L0 24l6.305-1.507A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.891 0-3.665-.497-5.197-1.366l-.372-.22-3.745.895.938-3.648-.243-.374A9.787 9.787 0 012.182 12C2.182 6.582 6.582 2.182 12 2.182c5.418 0 9.818 4.4 9.818 9.818 0 5.418-4.4 9.818-9.818 9.818z"></path></svg>
+        Agendar pelo WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="file:///C:/Users/Vickr/Downloads/landing%20page%20nova/aurora_creative_landing%20(1).html#servicos">
+        Ver nossos serviços
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-bar"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ============================================================
+   OBJETIVO
+============================================================ -->
+<div class="divider"></div>
+<div class="objetivo-wrap" id="sobre">
+  <div class="section">
+    <p class="section-label reveal visible">Por que a Aurora Creative</p>
+    <h2 class="section-title reveal reveal-d1 visible">Nosso objetivo</h2>
+    <p class="section-sub reveal reveal-d2 visible">Existimos para dar direção estratégica a marcas que querem crescer com consistência, unindo identidade visual, conteúdo e planejamento em um processo único e transparente.</p>
+    <div class="objetivo-grid">
+      <div class="obj-card reveal visible">
+        <div class="obj-icon">🎯</div>
+        <h3>Estratégia antes da estética</h3>
+        <p>Cada entrega parte de um diagnóstico real. Não criamos conteúdo ou identidade visual sem entender seu objetivo, público e posicionamento primeiro.</p>
+      </div>
+      <div class="obj-card reveal reveal-d1 visible">
+        <div class="obj-icon">⚙️</div>
+        <h3>Processo estruturado</h3>
+        <p>Trabalhamos com etapas claras, prazos definidos e pontos de aprovação ao longo de todo o projeto, o cliente acompanha cada fase sem surpresas.</p>
+      </div>
+      <div class="obj-card reveal reveal-d2 visible">
+        <div class="obj-icon">✦</div>
+        <h3>Identidade sob medida</h3>
+        <p>Não usamos fórmulas prontas. Cada projeto é construído a partir da identidade real do cliente, com personalização em cada entrega.</p>
+      </div>
+      <div class="obj-card reveal reveal-d3 visible">
+        <div class="obj-icon">📈</div>
+        <h3>Resultado como foco</h3>
+        <p>Conteúdo e branding orientados por resultado: presença consistente, identidade reconhecível e comunicação que gera conexão e conversão.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+   SERVIÇOS — 3D
+============================================================ -->
+<div class="divider"></div>
+<div class="services-wrap" id="servicos">
+  <div class="deco-ring deco-ring-1"></div>
+  <div class="deco-ring deco-ring-2"></div>
+  <div class="deco-dot deco-dot-1"></div>
+  <div class="deco-dot deco-dot-2"></div>
+  <div class="section services-inner">
+    <p class="section-label reveal visible">O que fazemos</p>
+    <h2 class="section-title reveal reveal-d1 visible">Nossos serviços</h2>
+    <p class="section-sub reveal reveal-d2 visible">Passe o mouse sobre cada card para explorar. Cada serviço pode ser contratado individualmente ou combinado em um projeto personalizado para a sua marca.</p>
+    <div class="services-grid">
+
+      <div class="s-card reveal visible" data-card="">
+        <div class="s-glow"></div>
+        <div class="s-card-body">
+          <div class="s-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2.5" stroke="white" stroke-width="1.5"></rect><path d="M9 7h6M9 11h6M9 15h3" stroke="white" stroke-width="1.5" stroke-linecap="round"></path><circle cx="12" cy="19.5" r=".75" fill="white"></circle></svg>
+          </div>
+          <div class="s-eyebrow">Crescimento &amp; Presença Digital</div>
+          <h3>Gestão de Redes Sociais</h3>
+          <p>Planejamento editorial, criação de copys, produção de artes, edição de fotos e vídeos e agendamento de postagens, tudo orientado por estratégia e identidade visual.</p>
+          <div class="s-tags"><span>Planejamento</span><span>Copywriting</span><span>Design de posts</span><span>Edição</span><span>Agendamento</span></div>
+        </div>
+      </div>
+
+      <div class="s-card reveal reveal-d1 visible" data-card="" style="transform: perspective(1200px) rotateX(0deg) rotateY(0deg) translateZ(0px); --gx: 30.942555050155136%; --gy: 20.888246975988444%;">
+        <div class="s-glow"></div>
+        <div class="s-card-body">
+          <div class="s-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none"><polygon points="12,3 14.8,9 21.5,9.8 16.8,14.2 18.2,20.8 12,17.4 5.8,20.8 7.2,14.2 2.5,9.8 9.2,9" stroke="white" stroke-width="1.4" stroke-linejoin="round"></polygon></svg>
+          </div>
+          <div class="s-eyebrow">Identidade Visual &amp; Posicionamento</div>
+          <h3>Branding &amp; Rebranding</h3>
+          <p>Construção ou reformulação da identidade visual: logotipo, paleta, tipografia, tom de voz e diretrizes de marca, para marcas novas ou em reposicionamento.</p>
+          <div class="s-tags"><span>Identidade visual</span><span>Logotipo</span><span>Paleta &amp; tipografia</span><span>Manual de marca</span></div>
+        </div>
+      </div>
+
+      <div class="s-card reveal reveal-d2 visible" data-card="">
+        <div class="s-glow"></div>
+        <div class="s-card-body">
+          <div class="s-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="white" stroke-width="1.5" stroke-linejoin="round"></path><path d="M8 10h8M8 14h5" stroke="white" stroke-width="1.5" stroke-linecap="round"></path></svg>
+          </div>
+          <div class="s-eyebrow">Direcionamento Estratégico</div>
+          <h3>Consultoria</h3>
+          <p>Acompanhamento estratégico pontual ou contínuo, para marcas que precisam de direcionamento em posicionamento, conteúdo ou identidade, com recomendações práticas.</p>
+          <div class="s-tags"><span>Posicionamento</span><span>Estratégia de conteúdo</span><span>Plano de ação</span></div>
+        </div>
+      </div>
+
+      <div class="s-card reveal reveal-d3 visible" data-card="">
+        <div class="s-glow"></div>
+        <div class="s-card-body">
+          <div class="s-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7.5" stroke="white" stroke-width="1.5"></circle><path d="m21 21-4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round"></path><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"></path></svg>
+          </div>
+          <div class="s-eyebrow">Ponto de Partida</div>
+          <h3>Diagnóstico de Perfil</h3>
+          <p>Análise completa do perfil ou da marca: identidade, conteúdo, consistência, posicionamento e oportunidades de melhoria, base para qualquer projeto.</p>
+          <div class="s-tags"><span>Análise de perfil</span><span>Pontos de melhoria</span><span>Recomendações</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+   CTA
+============================================================ -->
+<div class="form-wrap" id="contato">
+  <div class="form-section">
+    <div class="form-header reveal visible">
+      <p class="section-label">Próximos passos</p>
+      <h2 class="section-title">Pronto para elevar sua marca?</h2>
+      <p class="section-sub">Cada projeto começa com uma conversa. A partir do seu objetivo montamos uma proposta personalizada com os serviços que fazem sentido para o seu momento</p>
+    </div>
+
+    <div class="form-container reveal reveal-d1 visible">
+      <div class="form-grid" id="contactForm">
+
+        <div class="form-group">
+          <label class="form-label" for="f-nome">Seu Nome</label>
+          <input class="form-input" type="text" id="f-nome" placeholder="Como podemos te chamar">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-empresa">Empresa</label>
+          <input class="form-input" type="text" id="f-empresa" placeholder="Nome da sua empresa ou perfil das redes">
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label" for="f-servico">O que você procura</label>
+          <select class="form-select form-input" id="f-servico">
+            <option value="" disabled="" selected="">Selecione um serviço</option>
+            <option value="Gestão de Redes Sociais (Social Media)">Gestão de Redes Sociais (Social Media)</option>
+            <option value="Identidade Visual Completa">Identidade Visual Completa</option>
+            <option value="Análise e Aprimoramento de Perfil">Análise e Aprimoramento de Perfil</option>
+            <option value="Landing Page">Landing Page</option>
+            <option value="Roteirização de Conteúdo">Roteirização de Conteúdo</option>
+            <option value="Gestão de Tráfego Pago">Gestão de Tráfego Pago</option>
+            <option value="Ainda estamos descobrindo">Ainda estamos descobrindo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-email">E-mail</label>
+          <input class="form-input" type="email" id="f-email" placeholder="você@empresa.com">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-whatsapp">WhatsApp</label>
+          <input class="form-input" type="tel" id="f-whatsapp" placeholder="(11) 90000-0000">
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label" for="f-objetivo">Descreva brevemente o seu objetivo</label>
+          <textarea class="form-textarea" id="f-objetivo" placeholder="Criar uma Presença Digital Completa"></textarea>
+        </div>
+
+      </div>
+
+      <div class="form-footer">
+        <div class="form-status">
+          <div class="status-dot"></div>
+          <span class="status-text">Estamos disponíveis para novos projetos</span>
+        </div>
+        <button class="btn-submit" onclick="enviarFormulario()">
+          Enviar para a Agência
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+   REDES SOCIAIS
+============================================================ -->
+<div class="divider"></div>
+<div class="redes-wrap">
+  <div class="section">
+    <p class="section-label reveal">Acompanhe a jornada</p>
+    <h2 class="section-title reveal reveal-d1">Siga nossas redes</h2>
+    <p class="section-sub reveal reveal-d2">Conteúdo sobre marketing, branding, bastidores da agência e dicas para crescer no digital, publicados toda semana.</p>
+    <div class="redes-grid">
+      <!-- ↓ Atualiza o @ do Instagram -->
+      <a class="rede-card rede-ig reveal" href="https://instagram.com/aurora.creative" target="_blank">
+        <div class="rede-platform">Instagram</div>
+        <div class="rede-handle">@aurora.creative</div>
+        <div class="rede-desc">Marketing digital, bastidores de agência e dicas para quem quer crescer com consistência no Instagram.</div>
+        <div class="rede-action">
+          Seguir no Instagram
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </div>
+      </a>
+      <!-- ↓ Atualiza o @ do TikTok -->
+      <a class="rede-card rede-tt reveal reveal-d1" href="https://tiktok.com/@aurora.creative.mkt" target="_blank">
+        <div class="rede-platform">TikTok</div>
+        <div class="rede-handle">@aurora.creative.mkt</div>
+        <div class="rede-desc">A docussérie de construir uma agência durante a faculdade, bastidores reais de quem está fazendo acontecer.</div>
+        <div class="rede-action">
+          Seguir no TikTok
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+   FOOTER
+============================================================ -->
+<div class="divider"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="dot"></div>
+      <span>Aurora Creative</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="file:///C:/Users/Vickr/Downloads/landing%20page%20nova/aurora_creative_landing%20(1).html#sobre">Nosso objetivo</a></li>
+      <li><a href="file:///C:/Users/Vickr/Downloads/landing%20page%20nova/aurora_creative_landing%20(1).html#servicos">Serviços</a></li>
+      <li><a href="file:///C:/Users/Vickr/Downloads/landing%20page%20nova/aurora_creative_landing%20(1).html#contato">Contato</a></li>
+      <li><a href="https://instagram.com/aurora.creative" target="_blank">Instagram</a></li>
+      <li><a href="https://wa.me/5511947899237" target="_blank">WhatsApp</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Aurora Creative — Agencia de Marketing digital </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+   THREE.JS — Hero Particle Aurora
+============================================================ -->
+<script src="./aurora_creative_landing (2)_files/three.min.js.download"></script>
+<script>
+/* ============ HERO CANVAS ============ */
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const scene  = new THREE.Scene();
+  const cam    = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 1000);
+  const rend   = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+
+  rend.setPixelRatio(Math.min(devicePixelRatio, 2));
+  rend.setSize(innerWidth, innerHeight);
+  rend.setClearColor(0x000000, 0);
+  cam.position.z = 8;
+
+  const N = 2200;
+  const pos = new Float32Array(N * 3);
+  const col = new Float32Array(N * 3);
+
+  for (let i = 0; i < N; i++) {
+    pos[i*3]   = (Math.random() - .5) * 32;
+    pos[i*3+1] = (Math.random() - .5) * 22;
+    pos[i*3+2] = (Math.random() - .5) * 14;
+    const t = Math.random();
+    if (t < .60)      { col[i*3]=1;    col[i*3+1]=1;    col[i*3+2]=1; }
+    else if (t < .82) { col[i*3]=.29;  col[i*3+1]=.21;  col[i*3+2]=.88; }
+    else              { col[i*3]=.48;  col[i*3+1]=.42;  col[i*3+2]=.94; }
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
+
+  const mat = new THREE.PointsMaterial({ size:.055, vertexColors:true, transparent:true, opacity:.78, sizeAttenuation:true });
+  const pts = new THREE.Points(geo, mat);
+  scene.add(pts);
+
+  const mkWire = (r, x, y, z, clr) => {
+    const m = new THREE.Mesh(
+      new THREE.OctahedronGeometry(r, 0),
+      new THREE.MeshBasicMaterial({ color:clr, wireframe:true, transparent:true, opacity:.09 })
+    );
+    m.position.set(x,y,z); return m;
+  };
+  const oc1 = mkWire(2.8,  6.5,  1, -3, 0x3d2ec0);
+  const oc2 = mkWire(1.8, -7, -1.5, -4, 0x5b3df0);
+  const oc3 = mkWire(1.2,  2,    5, -5, 0x7b68f0);
+
+  const torus = new THREE.Mesh(
+    new THREE.TorusGeometry(2.4, .04, 8, 48),
+    new THREE.MeshBasicMaterial({ color:0x4a35e0, transparent:true, opacity:.08 })
+  );
+  torus.position.set(-5.5, 2.5, -4);
+  torus.rotation.x = Math.PI / 3.5;
+  scene.add(oc1, oc2, oc3, torus);
+
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = (e.clientX / innerWidth  - .5) * 2;
+    my = (e.clientY / innerHeight - .5) * 2;
+  });
+
+  const clock = new THREE.Clock();
+  (function animate() {
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+    pts.rotation.y = t * .016 + mx * .04;
+    pts.rotation.x = t * .008 + my * .025;
+    pts.material.opacity = .72 + Math.sin(t * .4) * .06;
+    oc1.rotation.x = t * .25; oc1.rotation.y = t * .18;
+    oc2.rotation.x = t * .18; oc2.rotation.z = t * .12;
+    oc3.rotation.y = t * .3;  oc3.rotation.x = t * .2;
+    torus.rotation.z = t * .14; torus.rotation.y = t * .08;
+    rend.render(scene, cam);
+  })();
+
+  window.addEventListener('resize', () => {
+    cam.aspect = innerWidth / innerHeight;
+    cam.updateProjectionMatrix();
+    rend.setSize(innerWidth, innerHeight);
+  });
+})();
+
+/* ============ NAVBAR SCROLL ============ */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), { passive:true });
+
+/* ============ MOBILE NAV ============ */
+function toggleNav() {
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+}
+function closeNav() {
+  nav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ============ 3D CARD TILT ============ */
+document.querySelectorAll('[data-card]').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r  = card.getBoundingClientRect();
+    const x  = e.clientX - r.left;
+    const y  = e.clientY - r.top;
+    const cx = r.width  / 2;
+    const cy = r.height / 2;
+    card.style.transform = `perspective(1200px) rotateX(${-(y-cy)/18}deg) rotateY(${(x-cx)/18}deg) translateZ(10px)`;
+    card.style.setProperty('--gx', ((x / r.width)  * 100) + '%');
+    card.style.setProperty('--gy', ((y / r.height) * 100) + '%');
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+  });
+});
+
+/* ============ SCROLL REVEAL ============ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ============ SMOOTH SCROLL ============ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+  });
+});
+
+/* ============ FORM → WHATSAPP ============ */
+function enviarFormulario() {
+  const nome     = document.getElementById('f-nome').value.trim();
+  const empresa  = document.getElementById('f-empresa').value.trim();
+  const servico  = document.getElementById('f-servico').value;
+  const email    = document.getElementById('f-email').value.trim();
+  const whatsapp = document.getElementById('f-whatsapp').value.trim();
+  const objetivo = document.getElementById('f-objetivo').value.trim();
+
+  if (!nome) { alert('Por favor, informe seu nome.'); return; }
+  if (!servico) { alert('Por favor, selecione o serviço desejado.'); return; }
+
+  const msg =
+    `Olá, Aurora Creative! 👋 Vim pelo site e gostaria de dar início a um projeto.
+
+*Nome:* ${nome || '—'}
+*Empresa / Perfil:* ${empresa || '—'}
+*Serviço desejado:* ${servico || '—'}
+*E-mail:* ${email || '—'}
+*WhatsApp:* ${whatsapp || '—'}
+*Objetivo:* ${objetivo || '—'}
+
+Aguardo o contato! 🚀`;
+
+  // ↓ Atualiza SEUNUMERO
+  const numero = '5511947899237';
+  window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(msg), '_blank');
+}
+</script>
+
+
+</body></html>
